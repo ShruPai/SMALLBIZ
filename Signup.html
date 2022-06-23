@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Signup</title>
+
+<head>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"> </script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"> </script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <link rel="stylesheet" href="home.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* form {
+            text-align: center;
+        }
+
+        h1 {
+            text-align: center;
+        } */
+
+        /* .h1{
+        text-align: center;
+    } */
+        form {
+            text-align: center;
+        }
+
+        .h1 {
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(71, 70, 70);
+        }
+
+        .d {
+            margin-left: 670px;
+            width: 200px;
+            height: 250px;
+            border: 1px dotted black
+        }
+    </style>
+    <script>
+
+        function check(form) {
+            ph = form.phno.value
+            if (ph.length != 10)
+                alert("Invalid phone number.Please try again")
+            //event.preventDefault()
+            // Function to check Whether both passwords
+            // is same or not.
+
+            password1 = form.pass.value;
+            password2 = form.cpass.value;
+
+
+            // If password not entered
+            if (password1 == '')
+                alert("Please enter Password");
+
+
+            // If confirm password not entered
+            else if (password2 == '')
+                alert("Please enter confirm password");
+
+            // If Not same return False.    
+            else if (password1 != password2) {
+                alert("\nPassword did not match: Please try again...")
+                //return false
+            }
+
+            // If same return True.
+            else {
+                alert("Password Match")
+                //return true;
+            }
+
+
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="#default" id="logo">SmallBiz</a>
+        <div id="navbar-right">
+            <a href="#Signup">Signup</a>
+            <a href="au.html">About us</a>
+            <a href="rev.html">Reviews</a>
+            <a href="home.html">Home</a>
+        </div>
+    </div>
+
+    <h1 class="h1">Sign up Page</h1>
+    <div class="d">
+        <form onSubmit="return check(this)">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="emailid">email:</label><br>
+            <input type="email" id="emailid" name="emailid"><br>
+            <label for="phno">Phone Number:</label><br>
+            <input type="text" id="phno" name="phno"><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" id="pass" name="pass"><br>
+            <label for="cpass">Confirm Password:</label><br>
+            <input type="password" id="cpass" name="cpass"><br>
+            <br>
+            <button type="submit" onclick="matchPassword()">Submit</button>
+            <button type="reset" value="Reset">Reset</button>
+        </form>
+    </div>
+    <script src="emailvalidation.js"></script>
+
+    <div id="root1"></div>
+    <script type="text/babel">
+        class Services extends React.Component {
+            onClickHandler = (event) => {
+                if (event.target.value == "North Bangalore") {
+                    window.location.href = "north.html"
+                }
+                else if (event.target.value == "South Bangalore") {
+                    window.location.href = "south.html"
+
+                }
+                else if (event.target.value == "West Bangalore") {
+                    window.location.href = "west.html"
+
+                }
+                else if (event.target.value == "East Bangalore") {
+                    window.location.href = "east.html"
+
+                }
+                else if (event.target.value == "Central Bangalore") {
+                    window.location.href = "central.html"
+
+                }
+            }
+
+            render() {
+                const mystyle1 = {
+
+                    backgroundColor: "floralwhite",
+                    padding: "10px",
+                    fontFamily: "Arial",
+                    float: "left",
+                    height: "200px",
+                    width: "1000px"
+                };
+
+
+
+
+                // const imgstyle={
+                //     height:"220px",
+                //     width:"300px"
+                // }
+                return (<div>
+                    <div style={mystyle1}>
+                        <p><label style={{ marginLeft: "350px", fontFamily: "Cursive" }}>Select your location to avail our services:
+                            <select onInput={this.onClickHandler} style={{ width: "200px" }} name="loc" >
+                                <option>Select</option>
+                                <option>North Bangalore</option>
+                                <option>South Bangalore</option>
+                                <option>West Bangalore</option>
+                                <option>East Bangalore</option>
+                                <option>Central Bangalore</option>
+                            </select>
+                        </label>
+                        </p>
+                    </div>
+
+                    {/*} <div style={{float:"left"}}>
+                             <center>
+                             <img src= {'servicesimg.jpg'} alt="pic" style={imgstyle}/>
+                             </center>
+                             </div>*/}
+                </div>)
+            }
+        }
+        ReactDOM.render(<Services />, document.getElementById("root1"))
+    </script>
+    <br>
+    <br>
+
+    <footer class="footer" style="bottom: 0;position:fixed;width: 100%;">
+        <a href="#"><i class="fa fa-facebook-official"></i></a>
+        <a href="#"><i class="fa fa-pinterest-p"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-flickr"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <p class="footer-content">
+            Copyright 2021 SmallBiz
+        </p>
+    </footer>
+</body>
+
+</html>
